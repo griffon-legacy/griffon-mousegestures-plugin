@@ -1,10 +1,10 @@
 /*
  * griffon-mouseguestures: MouseGestures Griffon plugin
- * Copyright 2010 and beyond, Andres Almiray
+ * Copyright 2010-2012 and beyond, Andres Almiray
  *
  * SmartGWT is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License version 3
- * as published by the Free Software Foundation.  SmartGWT is also
+ * as published by the Free Software Foundation.  griffon-mouseguestures is also
  * available under typical commercial license terms - see
  * smartclient.com/license.
  *
@@ -13,6 +13,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  */
+
 package griffon.mousegestures.factory
 
 import java.awt.event.MouseEvent

@@ -1,10 +1,12 @@
 /*
  * griffon-mouseguestures: MouseGestures Griffon plugin
- * Copyright 2010 and beyond, Andres Almiray
+ * Copyright 2010-2012 and beyond, Andres Almiray
  *
- * MouseGestures is free software; you can redistribute it and/or modify it
+ * SmartGWT is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License version 3
- * as published by the Free Software Foundation.
+ * as published by the Free Software Foundation.  griffon-mouseguestures is also
+ * available under typical commercial license terms - see
+ * smartclient.com/license.
  *
  * This software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -17,30 +19,59 @@
  */
 class MousegesturesGriffonPlugin {
     // the plugin version
-    def version = "0.2"
+    String version = '0.3'
     // the version or versions of Griffon the plugin is designed for
-    def griffonVersion = '0.9.2 > *' 
+    String griffonVersion = '0.9.5 > *'
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    Map dependsOn = [swing: '0.9.5']
     // resources that are included in plugin packaging
-    def pluginIncludes = []
+    List pluginIncludes = []
     // the plugin license
-    def license = 'GNU LGPL 2.1'
+    String license = 'GNU LGPL 2.1'
     // Toolkit compatibility. No value means compatible with all
     // Valid values are: swing, javafx, swt, pivot, gtk
-    def toolkits = ['swing']
+    List toolkits = ['swing']
     // Platform compatibility. No value means compatible with all
     // Valid values are:
     // linux, linux64, windows, windows64, macosx, macosx64, solaris
-    def platforms = []
+    List platforms = []
+    // URL where documentation can be found
+    String documentation = ''
+    // URL where source can be found
+    String source = 'https://github.com/griffon/griffon-mousegestures-plugin'
 
-    def author = 'Andres Almiray'
-    def authorEmail = 'aalmiray@users.sourceforge.net'
-    def title = 'Mouse gestures recognizer'
-    def description = '''
-Mouse gestures recognizer
-http://www.smardec.com/products/mouse-gestures.html
+    List authors = [
+        [
+            name: 'Andres Almiray',
+            email: 'aalmiray@yahoo.com'
+        ]
+    ]
+    String title = 'Recognize simple mouse gestures'
+    String description = '''
+Recognize simple mouse gestures with [MouseGestures][1].
+
+Usage
+-----
+
+The following methods become available on View scripts upon installing this plugin
+
+| *Node*       | *Property*  | *Type*  | *Default*                | *Bindable* |
+| ------------ | ----------- | ------- | ------------------------ | ---------- |
+| mouseGestures| start       | boolean |                          | no         |
+|              | mouseButton | int     |`MouseEvent.BUTTON1_MASK` | no         |
+
+Instances of `MouseGesturesListener` are responsible for processing the recognized gestures. There's a default listener
+registered with the `mouseGestures node`. You can use it in this way
+
+    mouseGestures(start: true) {
+        // receives gestures as they are recognized (cummulative)
+        onGestureMovementRecognized { String s -> println s }
+        // the final recognized gesture
+        onProcessGesture { String s -> println "<< $s >>" }
+    }
+
+MouseGestures are recognized anywhere in your app, be sure to turn them off when you no longer needed them.
+
+[1]: http://www.smardec.com/products/mouse-gestures.html
 '''
-
-    def documentation = 'http://griffon.codehaus.org/Mousegestures+Plugin'
 }
