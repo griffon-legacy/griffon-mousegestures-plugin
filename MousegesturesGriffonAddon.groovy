@@ -20,7 +20,7 @@ import griffon.mousegestures.factory.MouseGesturesFactory
  * @author Andres Almiray
  */
 class MousegesturesGriffonAddon {
-    def factories = [
+    Map factories = [
         mouseGestures: new MouseGesturesFactory()
     ]
 }
